@@ -6,9 +6,10 @@
 
 		<title>reveal.js</title>
 
+		<link href="css/style.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/white.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -25,8 +26,184 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h3>Microsoft Typescript</h3>
+					<p>By Stanislav Vitvitskiy</p>
+					<p>2020</p>
+				</section>
+				<section>
+					<h5>
+						<ul>
+							<li>Intro</li>
+							<li>Installation Process</li>
+							<li>TypeScript Syntax</li>
+							<li>Do's and Don'ts</li>
+							<li>Conclusion</li>
+						</ul>
+					</h5>
+				</section>
+				<section class="intro">
+					<h5>Introduction</h5>
+					<p>JavaScript that scales.</p>
+				</section>
+				<section>
+					<h5>Introduction</h5>
+					<p>
+						Microsoft Typescript is a statically typed compiled language.
+						It is a simple JavaScript code which runs in any browser,
+						Node.js or in any JavaScript engine that supports ECMAScript 3 (or newer).
+					</p>
+				</section>
+				<section>
+					<h5>Recent rise of TypScript's popularity, data from Google Trends</h5>
+					<img src="images/typeScriptInterest.png" alt="">
+				</section>
+				<section>
+					<h5>TypeScript Facts</h5>
+					<ul>
+						<li>Large and scale application development</li>
+						<li>Language, not a framework</li>
+						<li>Cross-compiles to JavaScript</li>
+						<li>Produces idiomatic JavaScript</li>
+						<li>Doesn‘t try to replace JavaScript</li>
+						<li>Offers missing language features (Anticipates ES6, …)</li>
+						<li>Is a superset of JavaScript (Promises easy migration of JS code)</li>
+						<li>JS libs can be used easily</li>
+						<li>(Optional) static typing</li>
+					</ul>
+				</section>
+				<section>
+					<h5>Installing TypeScript</h5>
+					<p>There are two main ways to get the TypeScript tools:</p>
+					<ul>
+						<li>Via npm (the Node.js package manager) / yarn add typescript</li>
+						<li>By installing TypeScript’s Visual Studio plugins.</li>
+					</ul>
+				</section>
+				<section>
+					<h5>Text Editors with TS support</h5>
+					<p>TypeScript is an open-source project but is developed and maintained by Microsoft
+						and as such was originally supported only in Microsoft’s Visual Studio platform.
+						Nowadays, there are a lot more text editors and IDEs that either natively or through
+						plugins offer support for the TypeScript syntax, auto-complete suggestions,
+						error catching, and built-in compilers.
+					</p>
+				</section>
+				<section>
+					<h5>Compiling process</h5>
+					<p>Compiling to JavaScript TypeScript is written in .ts files (or .tsx for JSX),
+						which can’t be used directly in the browser and need to be translated/converted
+						to vanilla .js first.</p>
+					<p>This compilation process can be done in a number of different ways:</p>
+					<ul>
+						<li>In the terminal using the command line tool tsc.</li>
+						<li>Directly in Visual Studio or some of the other IDEs and text editors.</li>
+						<li>Using automated task runners such as grunt, gulp.</li>
+					</ul>
+				</section>
+				<section>
+					<h5>Compiling to JS</h5>
+					<p>The following command takes a TypeScript file named main.ts
+						and translates it into its JavaScript version main.js.
+						If main.js already exists it will be overwritten.
+						<ul>
+							<li class="color-red">tsc main.ts</li>
+							<li>We can also compile multiple files simultaneously by listing all of them or by applying wildcards :</li>
+							<li># Will result in separate .js files: main.js worker.js.</li>
+							<li class="color-red">tsc main.ts worker.ts</li>
+							<li># Compiles all .ts files in the current folder. Does NOT work recursively.</li>
+						</ul>
+					</p>
+				</section>
+				<section>
+					<h5>TypeScript Syntax</h5>
+					<img src="images/variableDeclaration.png" alt="">
+				</section>
+				<section>
+					<h5>TypeScript Syntax – Classes</h5>
+					<img src="images/classTS.png" alt="">
+				</section>
+				<section>
+					<h5>TypeScript Syntax – Interfaces</h5>
+					<img style="width: 600px" src="images/interfaceTS.png" alt="">
+				</section>
+				<section>
+					<h5>TypeScript Syntax – Generics</h5>
+					<img src="images/genericsTS.png" alt="">
+				</section>
+				<section>
+					<h5>Do's and Don'ts | General types</h5>
+					<p>Don’t ever use the types Number, String, Boolean, or Object.
+						These types refer to non-primitive boxed objects that are almost never used appropriately in JavaScript code.
+					</p>
+					<img src="images/correct:incorrect.png" alt="">
+				</section>
+				<section>
+					<h5>Do's and Don'ts | Callback types</h5>
+					<p>Don't use the return type any for callbacks whose value will be ignored: </p>
+					<img src="images/callbackWrongCorrect.png" alt="">
+				</section>
+				<section>
+					<h5>Do's and Don'ts | Callback types</h5>
+					<p>Example: </p>
+					<img src="images/callbackTypes.png" alt="">
+					<p>Why: Using void is safer because it prevents you from accidently using the return value of x in an unchecked way</p>
+				</section>
+				<section>
+					<h5>Do's and Don'ts | Overloads and Callbacks</h5>
+					<p>Don't write separate overloads that differ only on callback arity -> Do write a single overload using the maximum arity: </p>
+					<img src="images/overloadsNcallbacks.png" alt="">
+				</section>
+				<section>
+					<h5>Do's and Don'ts | Function Overloads</h5>
+					<p>Don’t put more general overloads before more specific overloads,
+						Do sort overloads by putting the more general signatures after more specific signatures:</p>
+					<img src="images/functionOveloads.png" alt="">
+					<p>Why: TypeScript chooses the first matching overload when resolving function calls.
+						When an earlier overload is “more general” than a later one,
+						the later one is effectively hidden and cannot be called.</p>
+				</section>
+				<section>
+					<h5>Do's and Don'ts | Use Optional Parameters</h5>
+					<p>Don’t write several overloads that differ only in trailing parameters, Do use optional parameters whenever possible: </p>
+					<img src="images/optionalParams.png" alt="">
+					<p>Why: TypeScript chooses the first matching overload when resolving function calls.
+						When an earlier overload is “more general” than a later one,
+						the later one is effectively hidden and cannot be called.
+					</p>
+				</section>
+				<section>
+					<h5>Do's and Don'ts | Use Union Types</h5>
+					<p>Don’t write overloads that differ by type in only one argument position, Do use union types whenever possible:</p>
+					<img src="images/unionTypes.png" alt="">
+					<p>Note that we didn’t make b optional here because the return types of the signatures differ.</p>
+				</section>
+				<section>
+					<h5>Migrating from Javascript</h5>
+					<ol>
+						<li>Setting up your Directories</li>
+						<li>Writing a Configuration File</li>
+						<li>Integrating with Build tools(Gulp, Webpack)</li>
+						<img style="width: 600px" src="images/steps.png" alt="">
+					</ol>
+				</section>
+				<section>
+					<h3>Conclusion</h3>
+					<h6>Pros:</h6>
+					<ol>
+						<li>High Value, low cost improvement over JavaScript</li>
+						<li>Safe and more modular</li>
+						<li>Solid path to ES 6</li>
+					</ol>
+					<h6>Cons:</h6>
+					<ol>
+						<li>Still need to know JS quirks and features</li>
+						<li>Current compiler slowish (Faster one is in development)</li>
+					</ol>
+				</section>
+				<section>
+					<img style="border-radius: 100px" src="images/thx.png" alt="">
+				</section>
 			</div>
 		</div>
 
